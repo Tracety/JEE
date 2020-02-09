@@ -33,25 +33,19 @@ public class VilleBLOImpl implements VilleBLO {
 
 	@Override
 	public void addVille(String ville) throws SQLException {
-		 ville ville = new ville();
-		ville=formalismePasFou(ville);
-		villeDAO.putVille(ville);
+
 		
 	}
 
 	@Override
 	public void postVille(String ville) throws SQLException {
-		 ville ville = new ville();
-		ville=formalismePasFou(ville);
-		villeDAO.modifyVille(ville);
+
 		
 	}
 
 	@Override
 	public void deleteVille(String codeCommuneInsee) throws SQLException {
-		ville ville = new ville();
-		ville.setCodeCommuneInsee(codeCommuneInsee);
-		villeDAO.deleteVille(ville);
+
 	}
 	
 
