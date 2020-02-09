@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,8 +22,9 @@ public class MissionDAOImpl implements MissionDAO {
 
 		try {
 			// solution 1
-			Connection con = JDBCConfigurationSol1.getConnection();
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/sonar?useLegacyDatetimeCode=false&serverTimezone=Europe/Paris&useSSL=false","admin","admin");
 			// solution 2
+			System.out.println("okily dokily");
 			// Connection con = JDBCConfigurationSol2.getConnection();
 			Statement statement = con.createStatement();
 
