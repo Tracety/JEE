@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-
 @Configuration
 @PropertySource(value = { "classpath:application.properties" })
 public class JDBCConfigurationSol1 {

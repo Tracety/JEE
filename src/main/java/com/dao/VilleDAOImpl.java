@@ -72,4 +72,9 @@ public class VilleDAOImpl implements VilleDAO {
 		statement.close();
 	}
 
+	@Override
+	public ArrayList<Ville> findAllVille() {
+		return null;
+	}
+
 }
