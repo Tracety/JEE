@@ -63,13 +63,14 @@ public class VilleDAOImpl implements VilleDAO{
 
 					// execute la requete
 					try {
-						PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM ville_france WHERE "
-						+ "'Nom_Commune' LIKE '%" + Nom_commune + "%'");
+						try (PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM ville_france WHERE "
+						+ "'Nom_Commune' LIKE '%" + Nom_commune + "%'")) {
 						preparedStatement.executeUpdate();
 						preparedStatement.close();
 						statement.close();
 						
-					} catch (SQLException e) {
+					} 
+					}catch (SQLException e) {
 						e.printStackTrace();
 					}
 					}catch (SQLException e) {
