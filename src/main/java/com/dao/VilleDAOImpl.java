@@ -50,16 +50,15 @@ public class VilleDAOImpl implements VilleDAO{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-
 		}
+		
 		return listeVille;
 	}
 
 	@Override
 	public void deleteVille(String Nom_commune) throws SQLException {
 
-					Connection con = JDBCConfiguration.getConnection();
+					try (Connection con = JDBCConfiguration.getConnection()){
 					Statement statement = con.createStatement();
 
 					// execute la requete
@@ -72,8 +71,9 @@ public class VilleDAOImpl implements VilleDAO{
 						
 					} catch (SQLException e) {
 						e.printStackTrace();
-					}finally {
-
+					}
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
 		
 	}
@@ -141,9 +141,8 @@ public class VilleDAOImpl implements VilleDAO{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-
 		}
+		
 		return listeVille;
 	}
 }
