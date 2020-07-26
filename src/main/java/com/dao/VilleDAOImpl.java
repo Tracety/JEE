@@ -50,6 +50,8 @@ public class VilleDAOImpl implements VilleDAO{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+
 		}
 		return listeVille;
 	}
@@ -70,6 +72,8 @@ public class VilleDAOImpl implements VilleDAO{
 						
 					} catch (SQLException e) {
 						e.printStackTrace();
+					}finally {
+
 					}
 		
 	}
@@ -137,6 +141,8 @@ public class VilleDAOImpl implements VilleDAO{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+
 		}
 		return listeVille;
 	}
