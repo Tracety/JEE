@@ -41,7 +41,7 @@ public class JDBCConfiguration {
 		try {
 			DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
 			connection = DriverManager.getConnection(
-					"jdbc:mariadb://localhost:3306/ville?user=root&password=root");
+					"jdbc:mariadb://localhost:3306/ville?user=root&password=");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
