@@ -59,7 +59,7 @@ public class VilleDAOImpl implements VilleDAO{
 	public void deleteVille(String Nom_commune) throws SQLException {
 
 					try (Connection con = JDBCConfiguration.getConnection()){
-					Statement statement = con.createStatement();
+					try (Statement statement = con.createStatement()){
 
 					// execute la requete
 					try {
@@ -70,6 +70,9 @@ public class VilleDAOImpl implements VilleDAO{
 						statement.close();
 						
 					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					}catch (SQLException e) {
 						e.printStackTrace();
 					}
 					} catch (SQLException e) {
