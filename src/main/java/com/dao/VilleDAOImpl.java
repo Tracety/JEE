@@ -26,7 +26,7 @@ public class VilleDAOImpl implements VilleDAO{
 		try {
 
 			Connection con = JDBCConfiguration.getConnection();
-			Statement statement = con.createStatement();
+			try (Statement statement = con.createStatement()){
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france WHERE Nom_commune LIKE \""
 					+ ville + "\"");
 			
@@ -47,7 +47,7 @@ public class VilleDAOImpl implements VilleDAO{
 
 			resultSet.close();
 			statement.close();
-
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -87,7 +87,7 @@ public class VilleDAOImpl implements VilleDAO{
 		Connection con = JDBCConfiguration.getConnection();
 		// solution 2
 		// Connection con = JDBCConfigurationSol2.getConnection();
-		Statement statement = con.createStatement();
+		try (Statement statement = con.createStatement()){
 		PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
 		+ ville.getCodeCommuneInsee()
         + "', " + "'" + ville.getNomCommune() + "', " + "'" + ville.getCodePostal()
@@ -96,6 +96,7 @@ public class VilleDAOImpl implements VilleDAO{
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		statement.close();
+		}
 	}
 	
 	@Override
@@ -104,7 +105,7 @@ public class VilleDAOImpl implements VilleDAO{
 		
 		// solution 2
 		// Connection con = JDBCConfigurationSol2.getConnection();
-		Statement statement = con.createStatement();
+		try (Statement statement = con.createStatement()){
 		PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
 		+ ville.getCodeCommuneInsee()
         + "', " + "'" + ville.getNomCommune() + "', " + "'" + ville.getCodePostal()
@@ -113,6 +114,7 @@ public class VilleDAOImpl implements VilleDAO{
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		statement.close();
+		}
 	}
 
 	@Override
@@ -122,7 +124,7 @@ public class VilleDAOImpl implements VilleDAO{
 		try {
 
 			Connection con = JDBCConfiguration.getConnection();
-			Statement statement = con.createStatement();
+			try (Statement statement = con.createStatement()){
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france");
 			
 			while (resultSet.next()) {
@@ -143,6 +145,7 @@ public class VilleDAOImpl implements VilleDAO{
 			resultSet.close();
 			statement.close();
 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
