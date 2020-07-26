@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(value = { "classpath:application.properties" })
-public class JDBCConfigurationSol1 {
+public class JDBCConfiguration {
 
 	public static String url;
 
@@ -39,10 +39,9 @@ public class JDBCConfigurationSol1 {
 
 		Connection connection = null;
 		try {
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
 			connection = DriverManager.getConnection(
-					"jdbc:mysql://localhost/maven?useLegacyDatetimeCode=false&serverTimezone=Europe/Paris&useSSL=false",
-					"root", "");
+					"jdbc:mariadb://localhost:3306/ville?user=root&password=");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

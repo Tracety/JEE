@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
-import com.config.JDBCConfigurationSol1;
+import com.config.JDBCConfiguration;
 import com.dto.LieuMission;
 import com.dto.Mission;
 
@@ -35,19 +35,19 @@ public class MissionDAOImpl implements MissionDAO {
 			while (resultSet.next()) {
 				Mission mission = new Mission();
 
-				mission.setId(resultSet.getInt("id"));
-				mission.setNumeroTrain(resultSet.getString("numero"));
-				mission.setDateCirculation(resultSet.getString("dateCirculation"));
-				mission.setHoraireDepart(resultSet.getString("horaireDepart"));
-				mission.setHoraireDestination(resultSet.getString("horaireDestination"));
-				LieuMission lieuMissionOrigine = new LieuMission();
-				lieuMissionOrigine.setUIC(resultSet.getString("lieuOrigineUIC"));
-				lieuMissionOrigine.setLibPr(resultSet.getString("lieuOrigineLibPr"));
-				mission.setLieuOrigine(lieuMissionOrigine);
-				LieuMission lieuMissionDestination = new LieuMission();
-				lieuMissionDestination.setUIC(resultSet.getString("lieuDestinationUIC"));
-				lieuMissionDestination.setLibPr(resultSet.getString("lieuDestinationLibPr"));
-				mission.setLieuDestination(lieuMissionDestination);
+//				mission.setId(resultSet.getInt("id"));
+//				mission.setNumeroTrain(resultSet.getString("numero"));
+//				mission.setDateCirculation(resultSet.getString("dateCirculation"));
+//				mission.setHoraireDepart(resultSet.getString("horaireDepart"));
+//				mission.setHoraireDestination(resultSet.getString("horaireDestination"));
+//				LieuMission lieuMissionOrigine = new LieuMission();
+//				lieuMissionOrigine.setUIC(resultSet.getString("lieuOrigineUIC"));
+//				lieuMissionOrigine.setLibPr(resultSet.getString("lieuOrigineLibPr"));
+//				mission.setLieuOrigine(lieuMissionOrigine);
+//				LieuMission lieuMissionDestination = new LieuMission();
+//				lieuMissionDestination.setUIC(resultSet.getString("lieuDestinationUIC"));
+//				lieuMissionDestination.setLibPr(resultSet.getString("lieuDestinationLibPr"));
+//				mission.setLieuDestination(lieuMissionDestination);
 
 				listMission.add(mission);
 			}

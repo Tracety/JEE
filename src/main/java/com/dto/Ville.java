@@ -3,49 +3,53 @@ package com.dto;
 
 public class Ville{
 
-	private String code_commune_INSEE;
-	private String nom_commune;
+	private String code_Commune_INSEE;
+	private String nom_Commune;
 	private String code_Postal;
 	private String libelle_Acheminement;
 	private String ligne_5;
 	private String latitude;
 	private String longitude;
 
-	public Ville(String codeCommuneInsee, String nomCommune, String codePostal, String libelleAcheminement,
-			String ligne5, String lattitude, String longitude) {
+	public Ville(String code_Commune_INSEE, String nom_Commune, String code_Postal, String libelleAcheminement,
+			String ligne5, String latitude, String longitude) {
 		super();
-		this.code_commune_INSEE = codeCommuneInsee;
-		this.nom_commune = nomCommune;
-		this.code_Postal = codePostal;
+		this.code_Commune_INSEE = code_Commune_INSEE;
+		this.nom_Commune = nom_Commune;
+		this.code_Postal = code_Postal;
 		this.libelle_Acheminement = libelleAcheminement;
 		this.ligne_5 = ligne5;
-		this.latitude = lattitude;
+		this.latitude = latitude;
 		this.longitude = longitude;
+	}
+	
+	public Ville() {
+		
 	}
 
 
 	public String getCodeCommuneInsee() {
-		return code_commune_INSEE;
+		return code_Commune_INSEE;
 	}
 
-	public void setCodeCommuneInsee(String codeCommuneInsee) {
-		this.code_commune_INSEE = codeCommuneInsee;
+	public void setCodeCommuneInsee(String code_Commune_INSEE) {
+		this.code_Commune_INSEE = code_Commune_INSEE;
 	}
 
 	public String getNomCommune() {
-		return nom_commune;
+		return nom_Commune;
 	}
 
-	public void setNomCommune(String nomCommune) {
-		this.nom_commune = nomCommune;
+	public void setNomCommune(String nom_Commune) {
+		this.nom_Commune = nom_Commune;
 	}
 
 	public String getCodePostal() {
 		return code_Postal;
 	}
 
-	public void setCodePostal(String codePostal) {
-		this.code_Postal = codePostal;
+	public void setCodePostal(String code_Postal) {
+		this.code_Postal = code_Postal;
 	}
 
 	public String getLibelleAcheminement() {
@@ -64,7 +68,7 @@ public class Ville{
 		this.ligne_5 = ligne5;
 	}
 
-	public String getLattitude() {
+	public String getLatitude() {
 		return latitude;
 	}
 
@@ -80,4 +84,13 @@ public class Ville{
 		this.longitude = longitude;
 	}
 
+	// format JSON pour le front
+	@Override
+    public String toString() {
+        return "{ \"code_Commune_INSEE\":" +"\""+ this.code_Commune_INSEE +"\""+ ", \"nom_Commune\":" +"\""+ this.nom_Commune
+                +"\""+ ", \"code_Postal\":" +"\""+ this.code_Postal +"\""+ ", \"libelle_Acheminement\":" +"\""+
+        		this.libelle_Acheminement +"\""+ ", \"ligne5\":"
+                +"\""+ this.ligne_5 +"\""+ ", \"latitude\":" +"\""+ this.latitude +"\""+ ", \"longitude\":"
+        		+"\""+ this.longitude +"\""+ " }";
+    }
 }

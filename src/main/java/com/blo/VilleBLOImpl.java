@@ -2,6 +2,7 @@ package com.blo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,36 +16,29 @@ public class VilleBLOImpl implements VilleBLO {
 	@Autowired
 	private VilleDAO villeDAO;
 
-	@Override
-	public ArrayList<Ville> getInfoVille(Ville ville) throws VilleException, SQLException {
-		ArrayList<Ville> listVille;
-
-		if (ville.getCodeCommuneInsee() == null || "".equalsIgnoreCase(ville.getCodePostal())) {
-			listVille = villeDAO.getVille();
-		} else {
-			listVille = villeDAO.findAllVille();
-		}
-		System.out.println("Nombre de ville récupéré : " + listVille.size());
-
-		return listVille;
+	public List<Ville> getVille(String ville) throws VilleException{
+		List<Ville> listeVille;
+		if (ville == null || "".equalsIgnoreCase(ville)) {
+			listeVille = villeDAO.allVille();
+        } else {
+        	listeVille = villeDAO.getVille(ville);
+        }
+		return listeVille;
+	}
+	
+	
+	public void putVille(Ville ville) throws SQLException {
+		villeDAO.putVille(ville);
 	}
 
-	@Override
-	public void putVille(String ville) throws SQLException {
-		Ville ville1 = new Ville(null, null, null, null, null, null, null);
-		villeDAO.putVille(ville1);
-		
+	
+	public void postVille(Ville ville) throws SQLException {
+		villeDAO.postVille(ville);
 	}
 
-	@Override
-	public void postVille(String ville) throws SQLException {
-
-	}
-
-	@Override
-	public void deleteVille(String codeCommuneInsee) throws SQLException {
-		Ville ville1 = new Ville(null, null, null, null, null, null, null);
-		villeDAO.deleteVille(ville1);
+	
+	public void deleteVille(String Nom_commune) throws SQLException {
+		villeDAO.deleteVille(Nom_commune);
 	}
 	
 
