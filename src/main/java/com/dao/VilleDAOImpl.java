@@ -27,8 +27,8 @@ public class VilleDAOImpl implements VilleDAO{
 
 			Connection con = JDBCConfiguration.getConnection();
 			try (Statement statement = con.createStatement()){
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france WHERE Nom_commune LIKE \""
-					+ ville + "\"");
+			try (ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france WHERE Nom_commune LIKE \""
+					+ ville + "\"")){
 			
 			while (resultSet.next()) {
 				Ville ville2 = new Ville();
@@ -47,6 +47,7 @@ public class VilleDAOImpl implements VilleDAO{
 
 			resultSet.close();
 			statement.close();
+			}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -88,14 +89,15 @@ public class VilleDAOImpl implements VilleDAO{
 		// solution 2
 		// Connection con = JDBCConfigurationSol2.getConnection();
 		try (Statement statement = con.createStatement()){
-		PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
+		try (PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
 		+ ville.getCodeCommuneInsee()
         + "', " + "'" + ville.getNomCommune() + "', " + "'" + ville.getCodePostal()
         + "', " + "'" + ville.getLibelleAcheminement() + "', " + "'" + ville.getLigne5()
-        + "', " + "'" + ville.getLatitude() + "', " + "'" + ville.getLongitude() + "')");
+        + "', " + "'" + ville.getLatitude() + "', " + "'" + ville.getLongitude() + "')")) {
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		statement.close();
+		}
 		}
 	}
 	
@@ -106,14 +108,15 @@ public class VilleDAOImpl implements VilleDAO{
 		// solution 2
 		// Connection con = JDBCConfigurationSol2.getConnection();
 		try (Statement statement = con.createStatement()){
-		PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
+		try (PreparedStatement preparedStatement = con.prepareStatement(SQL_INSERT+ "VALUES ("+ "'" 
 		+ ville.getCodeCommuneInsee()
         + "', " + "'" + ville.getNomCommune() + "', " + "'" + ville.getCodePostal()
         + "', " + "'" + ville.getLibelleAcheminement() + "', " + "'" + ville.getLigne5()
-        + "', " + "'" + ville.getLatitude() + "', " + "'" + ville.getLongitude() + "')");
+        + "', " + "'" + ville.getLatitude() + "', " + "'" + ville.getLongitude() + "')")) {
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		statement.close();
+		}
 		}
 	}
 
@@ -125,7 +128,7 @@ public class VilleDAOImpl implements VilleDAO{
 
 			Connection con = JDBCConfiguration.getConnection();
 			try (Statement statement = con.createStatement()){
-			ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france");
+			try (ResultSet resultSet = statement.executeQuery("SELECT * FROM ville_france")){
 			
 			while (resultSet.next()) {
 				Ville ville = new Ville();
@@ -144,6 +147,7 @@ public class VilleDAOImpl implements VilleDAO{
 
 			resultSet.close();
 			statement.close();
+			}
 
 			}
 		} catch (SQLException e) {
